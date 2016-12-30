@@ -1,0 +1,17 @@
+repeat
+  tell application "System Events"
+      set MyList to (name of every process)
+  end tell
+  if (MyList contains "Spotify") is true then
+      tell application "Spotify" to next track
+      
+      -- Log vitals
+      tell application "Spotify"
+          set theTrack to current track
+          log "Song title: " & (name of theTrack as text) & " | Total plays: " & (played count of theTrack as text)
+      end tell
+      
+  end if
+  
+  delay (random number from 35 to 55)
+end repeat
